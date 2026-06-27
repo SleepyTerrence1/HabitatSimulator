@@ -24,3 +24,7 @@ body {
     border-radius:30px;
     color: black;
 }
+#StartButton:hover {
+    background-color:rgba(177, 246, 255, 0.8);
+    color:rgb(255, 255, 255);
+}
