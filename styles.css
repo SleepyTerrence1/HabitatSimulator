@@ -45,7 +45,6 @@ div {
     font-size:30px;
     border-radius:15px;
     color: black;
-    cursor: pointer;
 }
 
 #InfoButton:hover {
