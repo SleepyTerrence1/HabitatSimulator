@@ -30,6 +30,7 @@ div {
     font-size:30px;
     border-radius:30px;
     color: black;
+    cursor: pointer;
 }
 
 #StartButton:hover {
@@ -44,6 +45,7 @@ div {
     font-size:30px;
     border-radius:15px;
     color: black;
+    cursor: pointer;
 }
 
 #InfoButton:hover {
