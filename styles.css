@@ -45,3 +45,8 @@ div {
     border-radius:15px;
     color: black;
 }
+
+#InfoButton:hover {
+    background-color:rgba(177, 246, 255, 0.8);
+    color:rgb(255, 255, 255);
+}
