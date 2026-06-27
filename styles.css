@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body {
+    text-align: center;
+    justify-content: center;
+    margin-top: 450px;
+    font-size:30px;
+}
+
+#StartButton {
+    margin-top: 40px;
+    width: 400px;
+    height: 100px;
+    font-size:30px;
+    border-radius:30px;
+}
