@@ -16,6 +16,13 @@ body {
     font-size:40px;
 }
 
+div {
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    align-items:center
+}
+
 #StartButton {
     margin-top: 40px;
     width: 400px;
@@ -24,6 +31,12 @@ body {
     border-radius:30px;
     color: black;
 }
+
+#StartButton:hover {
+    background-color:rgba(177, 246, 255, 0.8);
+    color:rgb(255, 255, 255);
+}
+
 #InfoButton {
     margin-top: 40px;
     width: 200px;
@@ -31,8 +44,4 @@ body {
     font-size:30px;
     border-radius:15px;
     color: black;
-}
-#StartButton:hover {
-    background-color:rgba(177, 246, 255, 0.8);
-    color:rgb(255, 255, 255);
 }
