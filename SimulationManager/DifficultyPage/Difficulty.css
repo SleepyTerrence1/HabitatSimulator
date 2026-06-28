@@ -14,3 +14,12 @@ div {
     justify-content: flex-start;
     align-items:center
 }
+#EasySim {
+    margin-top: 100px;
+    width: 350px;
+    height: 125px;
+    font-size:30px;
+    border-radius:15px;
+    color: black;
+    cursor: pointer;
+}
