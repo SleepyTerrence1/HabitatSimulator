@@ -20,8 +20,12 @@ div {
     height: 125px;
     font-size:22px;
     border-radius:15px;
-    color: black;
+    color: rgb(0, 0, 0);
     cursor: pointer;
+}
+#EasySim:hover {
+    background-color:rgba(205, 255, 203, 0.8);
+    color:rgba(255, 255, 255, 0);
 }
 #MediumSim {
     margin-top: 50px;
