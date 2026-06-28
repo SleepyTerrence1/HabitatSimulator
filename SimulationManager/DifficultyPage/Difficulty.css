@@ -18,7 +18,16 @@ div {
     margin-top: 100px;
     width: 350px;
     height: 125px;
-    font-size:30px;
+    font-size:22px;
+    border-radius:15px;
+    color: black;
+    cursor: pointer;
+}
+#MediumSim {
+    margin-top: 50px;
+    width: 350px;
+    height: 125px;
+    font-size:22px;
     border-radius:15px;
     color: black;
     cursor: pointer;
