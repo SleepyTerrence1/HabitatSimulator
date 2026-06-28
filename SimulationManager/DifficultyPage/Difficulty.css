@@ -32,3 +32,13 @@ div {
     color: black;
     cursor: pointer;
 }
+#HardSim {
+    margin-top: 50px;
+    width: 350px;
+    height: 125px;
+    font-size:22px;
+    border-radius:15px;
+    color: black;
+    cursor: pointer;
+}
+
