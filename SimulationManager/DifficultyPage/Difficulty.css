@@ -25,7 +25,7 @@ div {
 }
 #EasySim:hover {
     background-color:rgba(205, 255, 203, 0.8);
-    color:rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255)
 }
 #MediumSim {
     margin-top: 50px;
@@ -38,7 +38,7 @@ div {
 }
 #MediumSim:hover {
     background-color:#feffbacc;
-    color:rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255)
 }
 #HardSim {
     margin-top: 50px;
@@ -51,6 +51,6 @@ div {
 }
 #HardSim:hover {
     background-color:#ffbdbdcc;
-    color:rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255)
 }
 
