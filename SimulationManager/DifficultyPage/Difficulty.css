@@ -36,6 +36,10 @@ div {
     color: black;
     cursor: pointer;
 }
+#MediumSim:hover {
+    background-color:#feffbacc;
+    color:rgba(255, 255, 255, 0);
+}
 #HardSim {
     margin-top: 50px;
     width: 350px;
