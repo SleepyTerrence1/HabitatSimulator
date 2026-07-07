@@ -1,10 +1,10 @@
-let Power = 0 //Power covered in watts
-let Money = 10000000 //In Dolla dollars
+
 
 const TPS = 20;
 
 function Update() {
-
+    let Power = 0 //Power covered in watts
+    let Money = 10000000 //In Dolla dollars
     console.log("Tick Updated")
 }
 
