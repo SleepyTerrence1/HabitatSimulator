@@ -6,6 +6,7 @@ function Update() {
     let Money = 10000000 //In Dolla dollars
     //Modules
     
+    //Habitat Modules
     const SHabitat_Module = {
         Name: "Small Habitat Module",
         Cost: 6000000,
@@ -24,7 +25,8 @@ function Update() {
         PowerConsumption: 220,
         CrewCapacity: 6
     };
-
+    
+    //Power Modules
     const Solar_Array = {
         Name: "Solar Array",
         Cost: 8000000,
