@@ -18,6 +18,12 @@ function Update() {
         PowerConsumption: 140,
         CrewCapacity: 4
     };
+    const LHabitat_Module = {
+        Name: "Large Habitat Module",
+        Cost: 15000000,
+        PowerConsumption: 220,
+        CrewCapacity: 6
+    };
 
 
 
