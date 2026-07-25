@@ -12,6 +12,15 @@ function Update() {
         PowerConsumption: 80,
         CrewCapacity: 2
     };
+    const MHabitat_Module = {
+        Name: "Medium Habitat Module",
+        Cost: 10000000,
+        PowerConsumption: 140,
+        CrewCapacity: 4
+    };
+
+
+
 
     console.log("Tick Updated");
 }
