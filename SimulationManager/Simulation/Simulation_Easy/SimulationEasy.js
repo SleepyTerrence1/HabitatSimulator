@@ -25,7 +25,11 @@ function Update() {
         CrewCapacity: 6
     };
 
-
+    const Solar_Array = {
+        Name: "Solar Array",
+        Cost: 8000000,
+        PowerProduction: 300
+    };
 
 
     console.log("Tick Updated");
