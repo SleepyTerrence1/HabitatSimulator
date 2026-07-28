@@ -16,6 +16,7 @@ function Update() {
     };
     const MHabitat_Module = {
         Name: "Medium Habitat Module",
+        Description: "Medium living quarters for up to 4 crew members",
         Cost: 10000000,
         PowerConsumption: 140,
         CrewCapacity: 4
