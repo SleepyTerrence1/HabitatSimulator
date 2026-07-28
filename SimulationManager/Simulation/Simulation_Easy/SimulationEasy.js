@@ -11,21 +11,27 @@ const SHabitat_Module = {
     Description: "Small living quarters for up to 2 crew members",
     Cost: 6000000,
     PowerConsumption: 80,
-    CrewCapacity: 2
+    PowerProduction: 0,
+    CrewCapacity: 2,
+    Storage_Capacity: 0
 };
 const MHabitat_Module = {
     Name: "Medium Habitat Module",
     Description: "Medium living quarters for up to 4 crew members",
     Cost: 10000000,
     PowerConsumption: 140,
-    CrewCapacity: 4
+    PowerProduction: 0,
+    CrewCapacity: 4,
+    Storage_Capacity: 0
 };
 const LHabitat_Module = {
     Name: "Large Habitat Module",
     Description: "Large living quarters for up to 6 crew members",
     Cost: 15000000,
     PowerConsumption: 220,
-    CrewCapacity: 6
+    PowerProduction: 0,
+    CrewCapacity: 6,
+    Storage_Capacity: 0
 };
     
 //Power Modules
@@ -33,13 +39,19 @@ const Solar_Array = {
     Name: "Solar Array",
     Description: "A solar array that generates power from sunlight",
     Cost: 8000000,
-    PowerProduction: 300
+    PowerConsumption: 0,
+    PowerProduction: 300,
+    CrewCapacity: 0,
+    Storage_Capacity: 0
 };
 const Nuclear_Power_Unit = {
     Name: "Nuclear Power Unit",
     Description: "A nuclear power unit that generates power from nuclear reactions",
     Cost: 20000000,
-    PowerProduction: 900
+    PowerConsumption: 0,
+    PowerProduction: 900,
+    CrewCapacity: 0,
+    Storage_Capacity: 0
 };
     
 //Research Modules
@@ -47,7 +59,10 @@ const Basic_Lab_Unit = {
     Name: "Basic Lab Unit",
     Description: "A basic laboratory for conducting simple experiments",
     Cost: 12000000,
-    PowerConsumption: 180
+    PowerConsumption: 180,
+    PowerProduction: 0,
+    CrewCapacity: 0,
+    Storage_Capacity: 0
 };
 
 //Resource Modules
@@ -56,7 +71,9 @@ const Basic_Storage_Unit = {
     Description: "A basic storage unit for storing resources",
     Cost: 4000000,
     PowerConsumption: 50,
-    Capacity: 500 //In Kilograms
+    PowerProduction: 0,
+    CrewCapacity: 0,
+    Storage_Capacity: 500 //In Kilograms
 };
 
 function Update() {
