@@ -9,7 +9,7 @@ function Update() {
     //Habitat Modules
     const SHabitat_Module = {
         Name: "Small Habitat Module",
-        Description: "Small living quarters for up to 2 crew members"
+        Description: "Small living quarters for up to 2 crew members",
         Cost: 6000000,
         PowerConsumption: 80,
         CrewCapacity: 2
@@ -23,6 +23,7 @@ function Update() {
     };
     const LHabitat_Module = {
         Name: "Large Habitat Module",
+        Description: "Large living quarters for up to 6 crew members",
         Cost: 15000000,
         PowerConsumption: 220,
         CrewCapacity: 6
@@ -31,6 +32,7 @@ function Update() {
     //Power Modules
     const Solar_Array = {
         Name: "Solar Array",
+        Description: "A solar array that generates power from sunlight",
         Cost: 8000000,
         PowerProduction: 300
     };
