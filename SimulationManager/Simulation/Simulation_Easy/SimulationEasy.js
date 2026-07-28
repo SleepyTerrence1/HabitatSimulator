@@ -6,6 +6,7 @@ function Update() {
     let Money = 10000000 //In Dolla dollars
     //Modules
     
+    //Habitat Modules
     const SHabitat_Module = {
         Name: "Small Habitat Module",
         Cost: 6000000,
@@ -31,6 +32,11 @@ function Update() {
         Cost: 8000000,
         PowerProduction: 300
     };
+    const Nuclear_Power_Unit = {
+        Name: "Nuclear Power Unit",
+        Cost: 20000000,
+        PowerProduction: 900
+    }
 
     console.log("Tick Updated");
 }
