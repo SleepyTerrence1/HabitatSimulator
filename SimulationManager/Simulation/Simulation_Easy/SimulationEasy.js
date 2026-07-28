@@ -76,7 +76,7 @@ const Basic_Storage_Unit = {
     Storage_Capacity: 500 //In Kilograms
 };
 
-//Module Thing
+//Module Array
 const Modules = {
     SHabitat_Module,
     MHabitat_Module,
