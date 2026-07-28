@@ -76,6 +76,17 @@ const Basic_Storage_Unit = {
     Storage_Capacity: 500 //In Kilograms
 };
 
+//Module Thing
+const Modules = {
+    SHabitat_Module,
+    MHabitat_Module,
+    LHabitat_Module,
+    Solar_Array,
+    Nuclear_Power_Unit,
+    Basic_Lab_Unit,
+    Basic_Storage_Unit
+};
+
 function Update() {
 
 
