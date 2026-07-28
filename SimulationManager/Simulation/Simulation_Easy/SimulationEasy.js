@@ -38,6 +38,7 @@ function Update() {
     };
     const Nuclear_Power_Unit = {
         Name: "Nuclear Power Unit",
+        Description: "A nuclear power unit that generates power from nuclear reactions",
         Cost: 20000000,
         PowerProduction: 900
     }
