@@ -101,7 +101,7 @@ for (const module in Modules) {
     <p>Storage Capacity: ${Modules[module].Storage_Capacity}</p>
     `;
 
-    moduleList.appendChild(div);
+    Module_Array.appendChild(div);
 }
 function Update() {
     
