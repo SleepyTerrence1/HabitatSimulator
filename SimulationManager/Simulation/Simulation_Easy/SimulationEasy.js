@@ -13,7 +13,8 @@ const SHabitat_Module = {
     PowerConsumption: 80,
     PowerProduction: 0,
     CrewCapacity: 2,
-    Storage_Capacity: 0
+    Storage_Capacity: 0,
+    Amount_Bought: 0
 };
 const MHabitat_Module = {
     Name: "Medium Habitat Module",
@@ -22,7 +23,8 @@ const MHabitat_Module = {
     PowerConsumption: 140,
     PowerProduction: 0,
     CrewCapacity: 4,
-    Storage_Capacity: 0
+    Storage_Capacity: 0,
+    Amount_Bought: 0
 };
 const LHabitat_Module = {
     Name: "Large Habitat Module",
@@ -31,7 +33,8 @@ const LHabitat_Module = {
     PowerConsumption: 220,
     PowerProduction: 0,
     CrewCapacity: 6,
-    Storage_Capacity: 0
+    Storage_Capacity: 0,
+    Amount_Bought: 0
 };
     
 //Power Modules
@@ -42,7 +45,8 @@ const Solar_Array = {
     PowerConsumption: 0,
     PowerProduction: 300,
     CrewCapacity: 0,
-    Storage_Capacity: 0
+    Storage_Capacity: 0,
+    Amount_Bought: 0
 };
 const Nuclear_Power_Unit = {
     Name: "Nuclear Power Unit",
@@ -51,7 +55,8 @@ const Nuclear_Power_Unit = {
     PowerConsumption: 0,
     PowerProduction: 900,
     CrewCapacity: 0,
-    Storage_Capacity: 0
+    Storage_Capacity: 0,
+    Amount_Bought: 0
 };
     
 //Research Modules
@@ -62,7 +67,8 @@ const Basic_Lab_Unit = {
     PowerConsumption: 180,
     PowerProduction: 0,
     CrewCapacity: 0,
-    Storage_Capacity: 0
+    Storage_Capacity: 0,
+    Amount_Bought: 0
 };
 
 //Resource Modules
@@ -73,7 +79,8 @@ const Basic_Storage_Unit = {
     PowerConsumption: 50,
     PowerProduction: 0,
     CrewCapacity: 0,
-    Storage_Capacity: 500 //In Kilograms
+    Storage_Capacity: 500, //In Kilograms
+    Amount_Bought: 0
 };
 
 //Module Array
@@ -99,6 +106,7 @@ for (const module in Modules) {
     <p>Power Production: ${Modules[module].PowerProduction}</p>
     <p>Crew Capacity: ${Modules[module].CrewCapacity}</p>
     <p>Storage Capacity: ${Modules[module].Storage_Capacity}</p>
+    <button>Purchase | Amount Bought: ${Modules[module].Amount_Bought}</button>
     `;
 
     Module_Array.appendChild(div);
