@@ -9,6 +9,7 @@ function Update() {
     //Habitat Modules
     const SHabitat_Module = {
         Name: "Small Habitat Module",
+        Description: "Small living quarters for up to 2 crew members"
         Cost: 6000000,
         PowerConsumption: 80,
         CrewCapacity: 2
