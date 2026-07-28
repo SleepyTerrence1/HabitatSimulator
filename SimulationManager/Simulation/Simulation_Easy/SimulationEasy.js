@@ -44,12 +44,21 @@ function Update() {
     }
     
     //Research Modules
-    const Basic_Lab = {
-        Name: "Basic Lab",
+    const Basic_Lab_Unit = {
+        Name: "Basic Lab Unit",
         Description: "A basic laboratory for conducting simple experiments",
         Cost: 12000000,
         PowerConsumption: 180
     }
+
+    //Resource Modules
+    const Basic_Storage_Unit = {
+        Name: "Basic Storage Unit",
+        Description: "A basic storage unit for storing resources",
+        Cost: 4000000,
+        PowerConsumption: 50,
+        Capacity: 500 //In Kilograms
+    };
 
     console.log("Tick Updated");
 }
