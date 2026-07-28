@@ -86,9 +86,25 @@ const Modules = {
     Basic_Lab_Unit,
     Basic_Storage_Unit
 };
+const Module_Array = document.getElementById("Module_Array");
 
+for (const module in Modules) {
+    const div = document.createElement("div");
+    div.innerHTML = 
+    `
+    <h2>${Modules[module].Name}</h2>
+    <p>${Modules[module].Description}</p>
+    <p>Cost: ${Modules[module].Cost}</p>
+    <p>Power Consumption: ${Modules[module].PowerConsumption}</p>
+    <p>Power Production: ${Modules[module].PowerProduction}</p>
+    <p>Crew Capacity: ${Modules[module].CrewCapacity}</p>
+    <p>Storage Capacity: ${Modules[module].Storage_Capacity}</p>
+    `;
+
+    moduleList.appendChild(div);
+}
 function Update() {
-
+    
 
     console.log("Tick Updated");
 }
