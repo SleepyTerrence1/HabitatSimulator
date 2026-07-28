@@ -42,6 +42,14 @@ function Update() {
         Cost: 20000000,
         PowerProduction: 900
     }
+    
+    //Research Modules
+    const Basic_Lab = {
+        Name: "Basic Lab",
+        Description: "A basic laboratory for conducting simple experiments",
+        Cost: 12000000,
+        PowerConsumption: 180
+    }
 
     console.log("Tick Updated");
 }
