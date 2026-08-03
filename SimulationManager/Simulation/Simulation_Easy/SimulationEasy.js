@@ -1,8 +1,9 @@
 
 //Function varuiables idk
 const TPS = 20;
-let Power = 0 //Power covered in watts
-let Money = 10000000 //In Dolla dollars
+let SimulationTime = 0;
+let Power = 0; //Power covered in watts
+let Money = 10000000; //In Dolla dollars
 //Modules
     
 //Habitat Modules
@@ -95,8 +96,14 @@ const Modules = {
 };
 
 //Display thing
+SimulationTime += 1 / TPS;
+const Simulation_RUNTIME = document.getElementById("Simulation_RUNTIME");
 const Module_Array = document.getElementById("Module_Array");
 
+//Simulation Runtime display thing
+Simulation_RUNTIME.textContent = SimulationTime.toFixed(2);
+
+//Module Display Thing
 for (const module of Object.values(Modules)) {
     const div = document.createElement("div");
     div.innerHTML = 
