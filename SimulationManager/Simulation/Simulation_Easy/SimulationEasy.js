@@ -14,7 +14,7 @@ const SHabitat_Module = {
     PowerProduction: 0,
     CrewCapacity: 2,
     Storage_Capacity: 0,
-    Amount_Bought: 0
+    AmountBought: 0
 };
 const MHabitat_Module = {
     Name: "Medium Habitat Module",
@@ -24,7 +24,7 @@ const MHabitat_Module = {
     PowerProduction: 0,
     CrewCapacity: 4,
     Storage_Capacity: 0,
-    Amount_Bought: 0
+    AmountBought: 0
 };
 const LHabitat_Module = {
     Name: "Large Habitat Module",
@@ -34,7 +34,7 @@ const LHabitat_Module = {
     PowerProduction: 0,
     CrewCapacity: 6,
     Storage_Capacity: 0,
-    Amount_Bought: 0
+    AmountBought: 0
 };
     
 //Power Modules
@@ -46,7 +46,7 @@ const Solar_Array = {
     PowerProduction: 300,
     CrewCapacity: 0,
     Storage_Capacity: 0,
-    Amount_Bought: 0
+    AmountBought: 0
 };
 const Nuclear_Power_Unit = {
     Name: "Nuclear Power Unit",
@@ -56,7 +56,7 @@ const Nuclear_Power_Unit = {
     PowerProduction: 900,
     CrewCapacity: 0,
     Storage_Capacity: 0,
-    Amount_Bought: 0
+    AmountBought: 0
 };
     
 //Research Modules
@@ -68,7 +68,7 @@ const Basic_Lab_Unit = {
     PowerProduction: 0,
     CrewCapacity: 0,
     Storage_Capacity: 0,
-    Amount_Bought: 0
+    AmountBought: 0
 };
 
 //Resource Modules
@@ -80,7 +80,7 @@ const Basic_Storage_Unit = {
     PowerProduction: 0,
     CrewCapacity: 0,
     Storage_Capacity: 500, //In Kilograms
-    Amount_Bought: 0
+    AmountBought: 0
 };
 
 //Module Array
@@ -93,20 +93,22 @@ const Modules = {
     Basic_Lab_Unit,
     Basic_Storage_Unit
 };
+
+//Display thing
 const Module_Array = document.getElementById("Module_Array");
 
-for (const module in Modules) {
+for (const module of Object.values(Modules)) {
     const div = document.createElement("div");
     div.innerHTML = 
     `
-    <h2>${Modules[module].Name}</h2>
-    <p>${Modules[module].Description}</p>
-    <p>Cost: ${Modules[module].Cost}</p>
-    <p>Power Consumption: ${Modules[module].PowerConsumption}</p>
-    <p>Power Production: ${Modules[module].PowerProduction}</p>
-    <p>Crew Capacity: ${Modules[module].CrewCapacity}</p>
-    <p>Storage Capacity: ${Modules[module].Storage_Capacity}</p>
-    <button>Purchase | Amount Bought: ${Modules[module].Amount_Bought}</button>
+    <h2>${module.Name}</h2>
+    <p>${module.Description}</p>
+    <p>Cost: ${module.Cost}</p>
+    <p>Power Consumption: ${module.PowerConsumption}</p>
+    <p>Power Production: ${module.PowerProduction}</p>
+    <p>Crew Capacity: ${module.CrewCapacity}</p>
+    <p>Storage Capacity: ${module.Storage_Capacity}</p>
+    <button onclick="">Purchase | Amount Bought: ${module.AmountBought}</button>
     `;
 
     Module_Array.appendChild(div);
