@@ -118,7 +118,7 @@ for (const module of Object.values(Modules)) {
 
     Module_Array.appendChild(div);
 }
-function Update() {
+function UpdateSimulation() {
     SimulationTime += 1 / TPS;
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
 
@@ -126,4 +126,4 @@ function Update() {
 }
 
 
-setInterval(Update, 1000 / TPS);
+setInterval(UpdateSimulation, 1000 / TPS);
