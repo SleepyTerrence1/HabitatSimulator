@@ -95,7 +95,7 @@ const Modules = [
     Basic_Storage_Unit
 ];
 
-//Display thing
+//Display thing variables and stuff
 const Simulation_RUNTIME = document.getElementById("Simulation_RUNTIME");
 const Module_Array = document.getElementById("Module_Array");
 
