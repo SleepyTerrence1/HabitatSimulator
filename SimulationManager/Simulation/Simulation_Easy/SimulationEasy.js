@@ -85,7 +85,7 @@ const Basic_Storage_Unit = {
 };
 
 //Module Array
-const Modules = {
+const Modules = [
     SHabitat_Module,
     MHabitat_Module,
     LHabitat_Module,
@@ -93,39 +93,42 @@ const Modules = {
     Nuclear_Power_Unit,
     Basic_Lab_Unit,
     Basic_Storage_Unit
-};
+];
 
 //Display thing
 const Simulation_RUNTIME = document.getElementById("Simulation_RUNTIME");
 const Module_Array = document.getElementById("Module_Array");
 
-//Simulation Runtime display thing
+//Display Function
+function DisplayUpdate() {
 
-//Module Display Thing
-const moduleList = Object.values(Modules);
-for (let i = 0; i < moduleList.length; i++) {
+    Module_Array.innerHTML = "";
 
-    const module = moduleList[i];
+    const moduleList = Object.values(Modules);
 
-    const div = document.createElement("div");
+    for (let i = 0; i < moduleList.length; i++) {
 
-    div.innerHTML = 
-    `
-    <h2>${module.Name}</h2>
-    <p>${module.Description}</p>
-    <p>Cost: ${module.Cost}</p>
-    <p>Power Consumption: ${module.PowerConsumption}</p>
-    <p>Power Production: ${module.PowerProduction}</p>
-    <p>Crew Capacity: ${module.CrewCapacity}</p>
-    <p>Storage Capacity: ${module.Storage_Capacity}</p>
+        const module = moduleList[i];
 
-    <button onclick="buyModule('${i}')">
-        Purchase | Amount Bought: ${module.AmountBought}
-    </button>
-    `;
+        const div = document.createElement("div");
 
+        div.innerHTML = 
+        `
+        <h2>${module.Name}</h2>
+        <p>${module.Description}</p>
+        <p>Cost: ${module.Cost}</p>
+        <p>Power Consumption: ${module.PowerConsumption}</p>
+        <p>Power Production: ${module.PowerProduction}</p>
+        <p>Crew Capacity: ${module.CrewCapacity}</p>
+        <p>Storage Capacity: ${module.Storage_Capacity}</p>
+
+        <button onclick="buyModule('${i}')">
+            Purchase | Amount Bought: ${module.AmountBought}
+        </button>
+        `;
     Module_Array.appendChild(div);
 }
+DisplayUpdate();
 //Buy Module function
 function buyModule(index) {
 
@@ -134,6 +137,7 @@ function buyModule(index) {
     if (Money >= module.Cost) {
         Money -= module.Cost;
         module.AmountBought++;
+        DisplayUpdate();
         console.log("Purchased:", module.Name);
     }
     else {
