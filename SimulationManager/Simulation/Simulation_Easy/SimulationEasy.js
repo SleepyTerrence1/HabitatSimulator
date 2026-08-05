@@ -98,13 +98,12 @@ const Modules = [
 //Display thing variables and stuff
 const Simulation_RUNTIME = document.getElementById("Simulation_RUNTIME");
 const Module_Array = document.getElementById("Module_Array");
-
+const MoneyDisplay = document.getElementById("MoneyDisplay");
 //Display Function
 function DisplayUpdate() {
-
+    
+    MoneyDisplay.textContent = `$${Money.toLocaleString()}`;
     Module_Array.innerHTML = "";
-
-    const moduleList = Modules;
 
     for (let i = 0; i < Modules.length; i++) {
 
@@ -122,7 +121,7 @@ function DisplayUpdate() {
         <p>Crew Capacity: ${module.CrewCapacity}</p>
         <p>Storage Capacity: ${module.Storage_Capacity}</p>
 
-        <button onclick="buyModule('${i}')">
+        <button onclick="buyModule(${i})">
             Purchase | Amount Bought: ${module.AmountBought}
         </button>
         `;
