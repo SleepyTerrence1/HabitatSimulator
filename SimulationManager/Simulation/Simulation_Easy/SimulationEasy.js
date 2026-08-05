@@ -102,8 +102,13 @@ const Module_Array = document.getElementById("Module_Array");
 //Simulation Runtime display thing
 
 //Module Display Thing
-for (const module of Object.values(Modules)) {
+const moduleList = Object.values(Modules);
+for (let i = 0; i < moduleList.length; i++) {
+
+    const module = moduleList[i];
+
     const div = document.createElement("div");
+
     div.innerHTML = 
     `
     <h2>${module.Name}</h2>
@@ -113,11 +118,29 @@ for (const module of Object.values(Modules)) {
     <p>Power Production: ${module.PowerProduction}</p>
     <p>Crew Capacity: ${module.CrewCapacity}</p>
     <p>Storage Capacity: ${module.Storage_Capacity}</p>
-    <button onclick="">Purchase | Amount Bought: ${module.AmountBought}</button>
+
+    <button onclick="buyModule('${i}')">
+        Purchase | Amount Bought: ${module.AmountBought}
+    </button>
     `;
 
     Module_Array.appendChild(div);
 }
+//Buy Module function
+function buyModule(index) {
+
+    const module = Object.values(Modules)[index];
+
+    if (Money >= module.Cost) {
+        Money -= module.Cost;
+        module.AmountBought++;
+        console.log("Purchased:", module.Name);
+    }
+    else {
+        console.log("Not enough money!");
+    }
+}
+//Simulation Update function
 function UpdateSimulation() {
     SimulationTime += 1 / TPS;
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
