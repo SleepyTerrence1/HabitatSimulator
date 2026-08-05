@@ -96,12 +96,10 @@ const Modules = {
 };
 
 //Display thing
-SimulationTime += 1 / TPS;
 const Simulation_RUNTIME = document.getElementById("Simulation_RUNTIME");
 const Module_Array = document.getElementById("Module_Array");
 
 //Simulation Runtime display thing
-Simulation_RUNTIME.textContent = SimulationTime.toFixed(2);
 
 //Module Display Thing
 for (const module of Object.values(Modules)) {
@@ -121,7 +119,8 @@ for (const module of Object.values(Modules)) {
     Module_Array.appendChild(div);
 }
 function Update() {
-    
+    SimulationTime += 1 / TPS;
+    Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
 
     console.log("Tick Updated");
 }
