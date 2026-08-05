@@ -104,11 +104,11 @@ function DisplayUpdate() {
 
     Module_Array.innerHTML = "";
 
-    const moduleList = Object.values(Modules);
+    const moduleList = Modules;
 
-    for (let i = 0; i < moduleList.length; i++) {
+    for (let i = 0; i < Modules.length; i++) {
 
-        const module = moduleList[i];
+        const module = Modules[i];
 
         const div = document.createElement("div");
 
@@ -127,12 +127,13 @@ function DisplayUpdate() {
         </button>
         `;
     Module_Array.appendChild(div);
+    }
 }
 DisplayUpdate();
 //Buy Module function
 function buyModule(index) {
 
-    const module = Object.values(Modules)[index];
+    const module = Modules[index];
 
     if (Money >= module.Cost) {
         Money -= module.Cost;
