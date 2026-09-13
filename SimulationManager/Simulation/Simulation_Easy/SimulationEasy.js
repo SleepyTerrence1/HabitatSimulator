@@ -103,6 +103,7 @@ const Modules = [
 const Simulation_RUNTIME = document.getElementById("Simulation_RUNTIME");
 const Module_Array = document.getElementById("Module_Array");
 const MoneyDisplay = document.getElementById("MoneyDisplay");
+const PowerDisplay = document.getElementById("PowerDisplay");
 //Display Function
 function DisplayUpdate() {
     
