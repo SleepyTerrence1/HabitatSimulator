@@ -104,6 +104,7 @@ const Simulation_RUNTIME = document.getElementById("Simulation_RUNTIME");
 const Module_Array = document.getElementById("Module_Array");
 const MoneyDisplay = document.getElementById("MoneyDisplay");
 const PowerDisplay = document.getElementById("PowerDisplay");
+const CrewDisplay = document.getElementById("CrewDisplay");
 //Display Function
 function DisplayUpdate() {
     
@@ -170,13 +171,15 @@ function StatUpdate() {
     }
 
     PowerDisplay.textContent = Power.toLocaleString();
+    CrewDisplay.textContent = CrewCapacity.toLocaleString();
 }
+
+StatUpdate();
 
 //Simulation Update function
 function UpdateSimulation() {
     SimulationTime += 1 / TPS;
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
-
     console.log("Tick Updated");
 }
 
