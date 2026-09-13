@@ -105,6 +105,7 @@ const Module_Array = document.getElementById("Module_Array");
 const MoneyDisplay = document.getElementById("MoneyDisplay");
 const PowerDisplay = document.getElementById("PowerDisplay");
 const CrewDisplay = document.getElementById("CrewDisplay");
+const StorageDisplay = document.getElementById("StorageDisplay");
 //Display Function
 function DisplayUpdate() {
     
@@ -172,6 +173,7 @@ function StatUpdate() {
 
     PowerDisplay.textContent = Power.toLocaleString();
     CrewDisplay.textContent = CrewCapacity.toLocaleString();
+    StorageDisplay.textContent = StorageCapacity.toLocaleString();
 }
 
 StatUpdate();
