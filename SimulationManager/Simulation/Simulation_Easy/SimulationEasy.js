@@ -142,6 +142,8 @@ function buyModule(index) {
     if (Money >= module.Cost) {
         Money -= module.Cost;
         module.AmountBought++;
+
+        StatUpdate();
         DisplayUpdate();
         console.log("Purchased:", module.Name);
     }
@@ -149,6 +151,27 @@ function buyModule(index) {
         console.log("Not enough money!");
     }
 }
+
+//Update Stats Function
+function StatUpdate() {
+    CrewCapacity = 0;
+    Power = 0;
+    StorageCapacity = 0;
+
+    for (const module of Modules) {
+        CrewCapacity += module.CrewCapacity * module.AmountBought;
+
+        Power +=
+            (module.PowerProduction - module.PowerConsumption)
+            * module.AmountBought;
+
+        StorageCapacity +=
+            module.Storage_Capacity * module.AmountBought;
+    }
+
+    PowerDisplay.textContent = Power.toLocaleString();
+}
+
 //Simulation Update function
 function UpdateSimulation() {
     SimulationTime += 1 / TPS;
