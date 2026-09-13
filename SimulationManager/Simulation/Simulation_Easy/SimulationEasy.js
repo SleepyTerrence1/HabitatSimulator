@@ -180,7 +180,6 @@ StatUpdate();
 function UpdateSimulation() {
     SimulationTime += 1 / TPS;
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
-    console.log("Tick Updated");
 }
 
 
