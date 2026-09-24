@@ -3,7 +3,11 @@
 const TPS = 20;
 let SimulationTime = 0
 let CrewCapacity = 0; //Crew capacity in people
+
+//Power Vars
 let Power = 0; //Power covered in watts
+let StoredPower = 0; //Power stored in watts
+
 let Money = 100000000; //In Dolla dollars
 let StorageCapacity = 0; //Storage capacity in kilograms
 //Add storage capacity later
@@ -181,6 +185,14 @@ StatUpdate();
 //Simulation Update function
 function UpdateSimulation() {
     SimulationTime += 1 / TPS;
+
+    //Calculate Power USage
+
+    //Update resources
+
+    //Check Warnings
+
+    //Update Display
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
 }
 
