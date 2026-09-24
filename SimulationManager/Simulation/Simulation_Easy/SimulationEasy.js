@@ -175,25 +175,25 @@ function StatUpdate() {
             module.Storage_Capacity * module.AmountBought;
     }
 
-    PowerDisplay.textContent = Power.toLocaleString();
+    PowerDisplay.textContent = StoredPower.toLocaleString();
     CrewDisplay.textContent = CrewCapacity.toLocaleString();
     StorageDisplay.textContent = StorageCapacity.toLocaleString();
 }
 
 StatUpdate();
-
 //Simulation Update function
 function UpdateSimulation() {
     SimulationTime += 1 / TPS;
 
     //Calculate Power USage
-
+    StoredPower += Power / TPS;
     //Update resources
 
     //Check Warnings
 
     //Update Display
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
+    StatUpdate()
 }
 
 
