@@ -180,6 +180,8 @@ function StatUpdate() {
     StorageDisplay.textContent = StorageCapacity.toLocaleString();
 }
 
+let DisplayTimer = 0;
+
 StatUpdate();
 //Simulation Update function
 function UpdateSimulation() {
@@ -192,8 +194,14 @@ function UpdateSimulation() {
     //Check Warnings
 
     //Update Display
+    DisplayTimer = DisplayTimer + 1 / TPS;
+    if (DisplayTimer >= 1) {
+        
+        StatUpdate()
+
+        DisplayTimer = 0;
+    }
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
-    StatUpdate()
 }
 
 
