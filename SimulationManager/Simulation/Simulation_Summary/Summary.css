@@ -42,7 +42,7 @@ h1 {
 
 .summary-card {
     background: rgba(15, 31, 42, 0.9);
-    border: 1px solid rgba(125, 211, 252, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 14px;
     padding: 18px 16px;
     display: flex;
@@ -52,7 +52,7 @@ h1 {
 }
 
 .label {
-    color: #7dd3fc;
+    color: #ffffff;
     font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -78,16 +78,18 @@ button {
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    background: linear-gradient(135deg, #0ea5e9, #0284c7);
-    color: white;
+    background: #ffffff;
+    color: #000000;
 }
 
 button.secondary {
-    background: linear-gradient(135deg, #64748b, #475569);
+    background: #ffffff;
+    color: #000000;
 }
 
 button:hover {
-    filter: brightness(1.08);
+    background:rgba(177, 246, 255, 0.8);
+    color: white;
 }
 
 @media (max-width: 600px) {
