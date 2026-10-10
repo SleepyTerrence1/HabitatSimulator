@@ -1,6 +1,6 @@
 # Habitat Simulator
 
-Habitat Simulator is a interactive web- based simulation of astronuat habitation.
+Habitat Simulator is a interactive web-based simulation of astronuat habitation.
 
 # Photos
 
