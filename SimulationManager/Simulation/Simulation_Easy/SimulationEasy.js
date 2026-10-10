@@ -1,16 +1,28 @@
 
 //Function varuiables idk
 const TPS = 20;
-let SimulationTime = 0
+const MISSION_DURATION_SECONDS = 600;
+const RESEARCH_GOAL = 150;
+const MAX_STORED_POWER = 10000;
+
+let SimulationTime = 0;
 let CrewCapacity = 0; //Crew capacity in people
+let MissionState = "construction";
+let WarningText = "None";
+let LastWarning = "";
+let MissionScore = 0;
+let MissionRating = "Not Rated";
+let MissionResultText = "Construction phase in progress.";
 
 //Power Vars
-let Power = 0; //Power covered in watts
-let StoredPower = 0; //Power stored in watts
+let PowerProduction = 0; //Power generated in watts
+let PowerConsumption = 0; //Power used in watts
+let PowerBalance = 0; //Power production minus consumption in watts
+let StoredPower = 1000; //Power stored in watts
 
 let Money = 100000000; //In Dolla dollars
 let StorageCapacity = 0; //Storage capacity in kilograms
-//Add storage capacity later
+let Research = 0; //Research points accumulated
 
 //Modules
     
@@ -23,7 +35,8 @@ const SHabitat_Module = {
     PowerProduction: 0,
     CrewCapacity: 2,
     Storage_Capacity: 0,
-    AmountBought: 0
+    AmountBought: 0,
+    ResearchProduction: 0
 };
 const MHabitat_Module = {
     Name: "Medium Habitat Module",
@@ -33,7 +46,8 @@ const MHabitat_Module = {
     PowerProduction: 0,
     CrewCapacity: 4,
     Storage_Capacity: 0,
-    AmountBought: 0
+    AmountBought: 0,
+    ResearchProduction: 0
 };
 const LHabitat_Module = {
     Name: "Large Habitat Module",
@@ -43,7 +57,8 @@ const LHabitat_Module = {
     PowerProduction: 0,
     CrewCapacity: 6,
     Storage_Capacity: 0,
-    AmountBought: 0
+    AmountBought: 0,
+    ResearchProduction: 0
 };
     
 //Power Modules
@@ -55,7 +70,8 @@ const Solar_Array = {
     PowerProduction: 300,
     CrewCapacity: 0,
     Storage_Capacity: 0,
-    AmountBought: 0
+    AmountBought: 0,
+    ResearchProduction: 0
 };
 const Nuclear_Power_Unit = {
     Name: "Nuclear Power Unit",
@@ -65,7 +81,8 @@ const Nuclear_Power_Unit = {
     PowerProduction: 900,
     CrewCapacity: 0,
     Storage_Capacity: 0,
-    AmountBought: 0
+    AmountBought: 0,
+    ResearchProduction: 0
 };
     
 //Research Modules
@@ -77,7 +94,8 @@ const Basic_Lab_Unit = {
     PowerProduction: 0,
     CrewCapacity: 0,
     Storage_Capacity: 0,
-    AmountBought: 0
+    AmountBought: 0,
+    ResearchProduction: 6
 };
 
 //Resource Modules
@@ -89,7 +107,8 @@ const Basic_Storage_Unit = {
     PowerProduction: 0,
     CrewCapacity: 0,
     Storage_Capacity: 500, //In Kilograms
-    AmountBought: 0
+    AmountBought: 0,
+    ResearchProduction: 0
 };
 
 //Module Array
@@ -107,18 +126,98 @@ const Modules = [
 const Simulation_RUNTIME = document.getElementById("Simulation_RUNTIME");
 const Module_Array = document.getElementById("Module_Array");
 const MoneyDisplay = document.getElementById("MoneyDisplay");
+const PowerProductionDisplay = document.getElementById("PowerProductionDisplay");
+const PowerConsumptionDisplay = document.getElementById("PowerConsumptionDisplay");
 const PowerDisplay = document.getElementById("PowerDisplay");
+const StoredPowerDisplay = document.getElementById("StoredPowerDisplay");
 const CrewDisplay = document.getElementById("CrewDisplay");
 const StorageDisplay = document.getElementById("StorageDisplay");
+const ResearchDisplay = document.getElementById("ResearchDisplay");
+const MissionStateDisplay = document.getElementById("MissionStateDisplay");
+const WarningDisplay = document.getElementById("WarningDisplay");
+const MissionObjectiveDisplay = document.getElementById("MissionObjectiveDisplay");
+const ScoreDisplay = document.getElementById("ScoreDisplay");
+const RatingDisplay = document.getElementById("RatingDisplay");
+const StartMissionButton = document.getElementById("StartMissionButton");
+
+function calculateMissionScore() {
+    const researchScore = Math.min(Research / RESEARCH_GOAL, 1) * 50;
+    const powerScore = Math.max(0, 30 - Math.max(0, -PowerBalance) / 1000);
+    const budgetScore = Math.min(Money / 100000000, 1) * 20;
+    const objectiveBonus = Research >= RESEARCH_GOAL ? 20 : 0;
+
+    const totalScore = Math.max(0, Math.min(100, Math.round(researchScore + powerScore + budgetScore + objectiveBonus)));
+
+    if (totalScore >= 85) {
+        MissionRating = "Excellent";
+    } else if (totalScore >= 65) {
+        MissionRating = "Successful";
+    } else if (totalScore >= 40) {
+        MissionRating = "Marginal";
+    } else {
+        MissionRating = "Failed";
+    }
+
+    MissionScore = totalScore;
+    return totalScore;
+}
+
+function showWarning(message) {
+    WarningText = message || "None";
+
+    if (WarningText === "None") {
+        WarningDisplay.textContent = "None";
+        LastWarning = "";
+        return;
+    }
+
+    if (WarningText !== LastWarning) {
+        WarningDisplay.textContent = WarningText;
+        LastWarning = WarningText;
+    }
+}
+
+function finishMission(success) {
+    if (MissionState !== "active") {
+        return;
+    }
+
+    MissionState = success ? "completed" : "failed";
+    StartMissionButton.disabled = true;
+
+    const resultText = success
+        ? "Mission successful! Research objective reached."
+        : "Mission failed. Critical station conditions were reached.";
+
+    MissionResultText = resultText;
+    calculateMissionScore();
+    showWarning(resultText);
+    DisplayUpdate();
+}
+
 //Display Function
 function DisplayUpdate() {
-    
     MoneyDisplay.textContent = `$${Money.toLocaleString()}`;
+    PowerProductionDisplay.textContent = `${PowerProduction.toLocaleString()} W`;
+    PowerConsumptionDisplay.textContent = `${PowerConsumption.toLocaleString()} W`;
+    PowerDisplay.textContent = `${PowerBalance.toLocaleString()} W`;
+    StoredPowerDisplay.textContent = `${StoredPower.toLocaleString()} W`;
+    CrewDisplay.textContent = CrewCapacity.toLocaleString();
+    StorageDisplay.textContent = StorageCapacity.toLocaleString();
+    ResearchDisplay.textContent = `${Research.toLocaleString()} / ${RESEARCH_GOAL}`;
+    MissionStateDisplay.textContent = MissionState;
+    MissionObjectiveDisplay.textContent = `Reach ${RESEARCH_GOAL} research before 10:00 mission time.`;
+    WarningDisplay.textContent = WarningText;
+    ScoreDisplay.textContent = `${MissionScore}`;
+    RatingDisplay.textContent = MissionRating;
+    Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
+
     Module_Array.innerHTML = "";
 
     for (let i = 0; i < Modules.length; i++) {
 
         const module = Modules[i];
+        const purchaseLabel = MissionState === "construction" ? "Purchase" : "Add Module";
 
         const div = document.createElement("div");
 
@@ -133,15 +232,36 @@ function DisplayUpdate() {
         <p>Storage Capacity: ${module.Storage_Capacity}</p>
 
         <button onclick="buyModule(${i})">
-            Purchase | Amount Bought: ${module.AmountBought}
+            ${purchaseLabel} | Amount Bought: ${module.AmountBought}
         </button>
         `;
     Module_Array.appendChild(div);
     }
 }
+
 DisplayUpdate();
+
+function startMission() {
+    if (MissionState !== "construction") {
+        return;
+    }
+
+    MissionState = "active";
+    SimulationTime = 0;
+    MissionResultText = "Mission in progress.";
+    MissionScore = 0;
+    MissionRating = "In Progress";
+    StartMissionButton.disabled = true;
+    WarningText = "Mission started. Research and power systems are active.";
+    showWarning(WarningText);
+    DisplayUpdate();
+}
+
 //Buy Module function
 function buyModule(index) {
+    if (MissionState === "completed" || MissionState === "failed") {
+        return;
+    }
 
     const module = Modules[index];
 
@@ -161,21 +281,20 @@ function buyModule(index) {
 //Update Stats Function
 function StatUpdate() {
     CrewCapacity = 0;
-    Power = 0;
+    PowerProduction = 0;
+    PowerConsumption = 0;
+    PowerBalance = 0;
     StorageCapacity = 0;
 
     for (const module of Modules) {
         CrewCapacity += module.CrewCapacity * module.AmountBought;
-
-        Power +=
-            (module.PowerProduction - module.PowerConsumption)
-            * module.AmountBought;
-
-        StorageCapacity +=
-            module.Storage_Capacity * module.AmountBought;
+        PowerProduction += module.PowerProduction * module.AmountBought;
+        PowerConsumption += module.PowerConsumption * module.AmountBought;
+        StorageCapacity += module.Storage_Capacity * module.AmountBought;
     }
 
-    PowerDisplay.textContent = StoredPower.toLocaleString();
+    PowerBalance = PowerProduction - PowerConsumption;
+    PowerDisplay.textContent = `${PowerBalance.toLocaleString()} W`;
     CrewDisplay.textContent = CrewCapacity.toLocaleString();
     StorageDisplay.textContent = StorageCapacity.toLocaleString();
 }
@@ -183,26 +302,77 @@ function StatUpdate() {
 let DisplayTimer = 0;
 
 StatUpdate();
+
 //Simulation Update function
 function UpdateSimulation() {
+    if (MissionState !== "active") {
+        return;
+    }
+
     SimulationTime += 1 / TPS;
 
-    //Calculate Power USage
-    StoredPower += Power / TPS;
-    //Update resources
+    //Calculate Power Usage and stored energy
+    const powerDelta = PowerBalance / TPS;
+    StoredPower += powerDelta;
 
-    //Check Warnings
+    if (StoredPower > MAX_STORED_POWER) {
+        StoredPower = MAX_STORED_POWER;
+    }
+
+    if (StoredPower < 0) {
+        StoredPower = 0;
+    }
+
+    //Research generation depends on having enough power available
+    const labCount = Basic_Lab_Unit.AmountBought;
+    if (labCount > 0 && StoredPower > 0 && PowerBalance > 0) {
+        const researchGain = (labCount * Basic_Lab_Unit.ResearchProduction) / TPS;
+        Research += researchGain;
+    }
+
+    //Check warnings
+    if (StoredPower <= 0 && PowerBalance <= 0) {
+        WarningText = "Critical: Stored energy is empty and the station is in a power deficit.";
+        showWarning(WarningText);
+        finishMission(false);
+        return;
+    }
+
+    if (StoredPower < MAX_STORED_POWER * 0.25) {
+        WarningText = "Warning: Stored energy is running low.";
+    }
+    else if (PowerBalance < 0) {
+        WarningText = "Warning: Power deficit detected. Station systems are consuming more than they generate.";
+    }
+    else if (labCount > 0 && PowerBalance <= 0) {
+        WarningText = "Warning: Research labs are offline because the station lacks sufficient power.";
+    }
+    else {
+        WarningText = "None";
+    }
+
+    showWarning(WarningText);
 
     //Update Display
-    DisplayTimer = DisplayTimer + 1 / TPS;
+    DisplayTimer += 1 / TPS;
     if (DisplayTimer >= 1) {
-        
-        StatUpdate()
-
+        StatUpdate();
+        DisplayUpdate();
         DisplayTimer = 0;
     }
+
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
+
+    if (Research >= RESEARCH_GOAL) {
+        finishMission(true);
+        return;
+    }
+
+    if (SimulationTime >= MISSION_DURATION_SECONDS) {
+        finishMission(false);
+        return;
+    }
 }
 
-
+StartMissionButton.addEventListener("click", startMission);
 setInterval(UpdateSimulation, 1000 / TPS);
