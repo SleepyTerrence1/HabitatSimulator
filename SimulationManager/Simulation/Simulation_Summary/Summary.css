@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+body {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.82) 80%), url('../../../Pictures/SpacePic2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.summary-panel {
+    width: min(1000px, 100%);
+    background: rgba(8, 18, 29, 0.82);
+    border: 1px solid rgba(125, 211, 252, 0.35);
+    border-radius: 20px;
+    padding: 30px 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    text-align: center;
+    color: #a5f3fc;
+    margin-bottom: 28px;
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.summary-card {
+    background: rgba(15, 31, 42, 0.9);
+    border: 1px solid rgba(125, 211, 252, 0.25);
+    border-radius: 14px;
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 110px;
+}
+
+.label {
+    color: #7dd3fc;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.summary-card span:last-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    color: white;
+}
+
+button.secondary {
+    background: linear-gradient(135deg, #64748b, #475569);
+}
+
+button:hover {
+    filter: brightness(1.08);
+}
+
+@media (max-width: 600px) {
+    .button-row {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}

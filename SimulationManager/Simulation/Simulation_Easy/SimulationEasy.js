@@ -20,7 +20,7 @@ let PowerConsumption = 0; //Power used in watts
 let PowerBalance = 0; //Power production minus consumption in watts
 let StoredPower = 5000; //Power stored in watts
 
-let Money = 50000000; //In Dolla dollars
+let Money = 100000000; //In Dolla dollars
 let StorageCapacity = 0; //Storage capacity in kilograms
 let Research = 0; //Research points accumulated
 
@@ -177,6 +177,21 @@ function showWarning(message) {
     }
 }
 
+function redirectToSummary() {
+    const params = new URLSearchParams({
+        outcome: MissionState === "completed" ? "Mission Complete" : "Mission Failed",
+        score: MissionScore,
+        rating: MissionRating,
+        research: Research.toFixed(1),
+        runtime: (SimulationTime / 60).toFixed(2),
+        money: Money.toLocaleString(),
+        power: PowerBalance.toLocaleString(),
+        difficulty: "Easy"
+    });
+
+    window.location.href = `../Simulation_Summary/Summary.html?${params.toString()}`;
+}
+
 function finishMission(success) {
     if (MissionState !== "active") {
         return;
@@ -193,6 +208,7 @@ function finishMission(success) {
     calculateMissionScore();
     showWarning(resultText);
     DisplayUpdate();
+    redirectToSummary();
 }
 
 //Display Function
