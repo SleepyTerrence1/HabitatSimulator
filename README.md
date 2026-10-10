@@ -4,8 +4,8 @@ Habitat Simulator is a interactive web- based simulation of astronuat habitation
 
 # Photos
 
-![Start Page of Habitat Simulator] (Pictures/StartPage.png) - Start Page
-![In Action Habitat Simulator] (Pictures/ActionPage.png) - Action
+![Start Page of Habitat Simulator](Pictures/StartPage.png) - Start Page
+![In Action Habitat Simulator](Pictures/ActionPage.png) - Action
 
 # Try It
 
