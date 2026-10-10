@@ -20,3 +20,5 @@ https://sleepyterrence1.github.io/HabitatSimulator/
 
 # Credits / acknowledgements
 I personally used AI to get me going on most of the project and also to code some of my simulation. AI was a huge help in this and I've learn't a lot about Javascript!
+
+AI mostly used in the Javascript code and parts of the CSS Code.
