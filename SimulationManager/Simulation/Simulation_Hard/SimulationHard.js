@@ -7,6 +7,7 @@ const MAX_STORED_POWER = 10000;
 let SimulationTime = 0;
 let CrewCapacity = 0;
 let MissionState = "construction";
+let SimulationInterval;
 let WarningText = "None";
 let LastWarning = "";
 let MissionScore = 0;
@@ -188,6 +189,7 @@ function finishMission(success) {
         return;
     }
 
+    clearInterval(SimulationInterval);
     MissionState = success ? "completed" : "failed";
     StartMissionButton.disabled = true;
     calculateMissionScore();
@@ -212,6 +214,9 @@ function DisplayUpdate() {
     RatingDisplay.textContent = MissionRating;
     Simulation_RUNTIME.textContent = (SimulationTime / 60).toFixed(2);
 
+}
+
+function UpdateModuleDisplay() {
     Module_Array.innerHTML = "";
 
     for (let i = 0; i < Modules.length; i++) {
@@ -220,16 +225,15 @@ function DisplayUpdate() {
         const div = document.createElement("div");
 
         div.innerHTML = `
-        <h2>${module.Name}</h2>
-        <p>${module.Description}</p>
-        <p>Cost: ${module.Cost}</p>
-        <p>Power Consumption: ${module.PowerConsumption}</p>
-        <p>Power Production: ${module.PowerProduction}</p>
-        <p>Crew Capacity: ${module.CrewCapacity}</p>
-        <p>Storage Capacity: ${module.Storage_Capacity}</p>
-        <button onclick="buyModule(${i})">${buttonText} | Amount Bought: ${module.AmountBought}</button>
+            <h2>${module.Name}</h2>
+            <p>${module.Description}</p>
+            <p>Cost: ${module.Cost}</p>
+            <p>Power Consumption: ${module.PowerConsumption}</p>
+            <p>Power Production: ${module.PowerProduction}</p>
+            <p>Crew Capacity: ${module.CrewCapacity}</p>
+            <p>Storage Capacity: ${module.Storage_Capacity}</p>
+            <button onclick="buyModule(${i})">${buttonText} | Amount Bought: ${module.AmountBought}</button>
         `;
-
         Module_Array.appendChild(div);
     }
 }
@@ -246,7 +250,9 @@ function startMission() {
     StartMissionButton.disabled = true;
     WarningText = "Mission started. Research and power systems are active.";
     showWarning(WarningText);
+    UpdateModuleDisplay();
     DisplayUpdate();
+    SimulationInterval = setInterval(UpdateSimulation, 1000 / TPS);
 }
 
 function buyModule(index) {
@@ -260,6 +266,7 @@ function buyModule(index) {
         Money -= module.Cost;
         module.AmountBought++;
         StatUpdate();
+        UpdateModuleDisplay();
         DisplayUpdate();
     }
 }
@@ -286,6 +293,7 @@ function StatUpdate() {
 
 let DisplayTimer = 0;
 StatUpdate();
+UpdateModuleDisplay();
 DisplayUpdate();
 
 function UpdateSimulation() {
@@ -346,6 +354,4 @@ function UpdateSimulation() {
         return;
     }
 }
-
 StartMissionButton.addEventListener("click", startMission);
-setInterval(UpdateSimulation, 1000 / TPS);
