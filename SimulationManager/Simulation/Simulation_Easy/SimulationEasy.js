@@ -3,7 +3,7 @@
 const TPS = 20;
 const MISSION_DURATION_SECONDS = 600;
 const RESEARCH_GOAL = 150;
-const MAX_STORED_POWER = 10000;
+const MAX_STORED_POWER = 15000;
 
 let SimulationTime = 0;
 let CrewCapacity = 0; //Crew capacity in people
@@ -18,9 +18,9 @@ let MissionResultText = "Construction phase in progress.";
 let PowerProduction = 0; //Power generated in watts
 let PowerConsumption = 0; //Power used in watts
 let PowerBalance = 0; //Power production minus consumption in watts
-let StoredPower = 1000; //Power stored in watts
+let StoredPower = 5000; //Power stored in watts
 
-let Money = 100000000; //In Dolla dollars
+let Money = 50000000; //In Dolla dollars
 let StorageCapacity = 0; //Storage capacity in kilograms
 let Research = 0; //Research points accumulated
 
